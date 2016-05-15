@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y git curl zip && rm -rf /var/lib/apt/lis
 # Pharo Smalltalk stuff
 RUN dpkg --add-architecture i386 && \
    apt-get update && \
-   apt-get install -y libc6:i386 libssl1.0.0:i386 sqlite3:i386 && \
+   apt-get install -y libc6:i386 libssl1.0.0:i386 sqlite3:i386 libfreetype6:i386 && \
    rm -rf /var/lib/apt/lists/*
 
 ENV JENKINS_HOME /var/jenkins_home
