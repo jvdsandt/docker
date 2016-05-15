@@ -2,6 +2,12 @@ FROM java:8-jdk
 
 RUN apt-get update && apt-get install -y git curl zip && rm -rf /var/lib/apt/lists/*
 
+# Pharo Smalltalk stuff
+RUN dpkg --add-architecture i386 && \
+   apt-get update && \
+   apt-get install -y libc6:i386 libssl1.0.0:i386 sqlite3:i386 && \
+   rm -rf /var/lib/apt/lists/*
+
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
 
@@ -46,6 +52,10 @@ RUN curl -fsSL http://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war
 
 ENV JENKINS_UC https://updates.jenkins.io
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
+
+#Download and unzip Pharo VM
+RUN cd /opt && wget http://files.pharo.org/platform/Pharo4.0-linux.zip && unzip Pharo4.0-linux.zip && rm Pharo4.0-linux.zip
+RUN cd /opt && wget http://files.pharo.org/platform/Pharo5.0-linux.zip && unzip Pharo4.0-linux.zip && rm Pharo5.0-linux.zip
 
 # for main web interface:
 EXPOSE 8080
