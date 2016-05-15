@@ -55,7 +55,7 @@ RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
 #Download and unzip Pharo VM
 RUN cd /opt && wget http://files.pharo.org/platform/Pharo4.0-linux.zip && unzip Pharo4.0-linux.zip && rm Pharo4.0-linux.zip
-RUN cd /opt && wget http://files.pharo.org/platform/Pharo5.0-linux.zip && unzip Pharo4.0-linux.zip && rm Pharo5.0-linux.zip
+RUN cd /opt && wget http://files.pharo.org/platform/Pharo5.0-linux.zip && unzip Pharo5.0-linux.zip && rm Pharo5.0-linux.zip
 
 # for main web interface:
 EXPOSE 8080
